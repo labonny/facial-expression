@@ -7,6 +7,7 @@ def predict(img):
     pred,pred_idx,probs = learn.predict(img)
     return {labels[i]: float(probs[i]) for i in range(len(labels))}
 
-iface = gr.Interface(fn=predict, inputs=gr.inputs.Image(shape=(48,48)), outputs=gr.outputs.Label(num_top_classes=3))
+examples = ["angryExample.jpg", "disgustExample.jpg", "fearExample.jpg", "happyExample.jpg", "neutralExample.jpg", "sadExample.jpg", "surpriseExample.jpg"]
+iface = gr.Interface(fn=predict, inputs=gr.inputs.Image(shape=(48,48)), outputs=gr.outputs.Label(num_top_classes=3), examples=examples)
 iface.launch()
 
